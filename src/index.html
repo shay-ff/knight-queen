@@ -4,19 +4,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="output.css">
-    <link rel="icon" href="public/favicon.png">
+    <link rel="icon" href="../public/favicon.png">
     <title> Puzzle </title>
 </head>
 <body class="bg-[#06080E]">
-    <audio id = "illegal-alert">
-        <source src="assets/decline.mp3" type="audio/mpeg">
-    </audio>
     <div class="w-full">
-        <div class="w-full flex justify-center bg-[#06080E] mt-4">
+        <div class="w-full flex justify-center bg-[#06080E] mt-4  py-1">
             <h1 class="text-white text-7xl font-serif"> Knight and Queen Puzzle </h1>
         </div>
         <div class="chess-board overflow-hidden"></div>
         <div class="flex justify-center">
+            <button id = "toggle-button" class="bg-white px-4 py-1 mr-4 rounded-md hover:bg-white/50 hover:text-white" onClick = "toggleSound()" > Toggle Sound </button>
+            <button type="checkbox" class="bg-white hover:bg-white/50 hover:text-white flex items-center rounded-md mr-4 px-4 py-1" onClick="showBlocked()"> Show blocked squares</button>
             <button class="bg-white px-4 py-1 rounded-md hover:bg-white/50 hover:text-white" onClick = "resetBoard()" > Reset </button>
         </div>
     </div>

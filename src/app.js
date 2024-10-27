@@ -1,26 +1,23 @@
 
-const globalFalse = [9, 12, 15, 18, 20, 22, 27, 28, 29, 33, 34, 35, 36, 37, 38, 39, 40, 43, 44, 45, 50, 52, 54, 57, 60, 63, 68];
-let tempFalse = [];
+const globalFalse = [1, 4, 7, 10, 12, 14, 19, 20, 21, 25, 26, 27, 28, 29, 30, 31, 32, 35, 36, 37, 42, 44, 46, 49, 52, 55, 60];
+let chessBoard;
+var playSound = true;
 
 function getRowCol(id) {
-    console.log(id);
-    var row = 0;
-    if(row % 8 === 0){
-        row = Math.floor(id / 8);
-    } else {
-        row = Math.floor(id / 8) + 1;
-    }
-    var col = (id) % 8;
-    if(col === 0){
-        col = 8;
-    }
-    console.log(row, col);
+    // console.log(id);
+    // Calculate row and column based on 1-based indexing
+    var row = Math.floor((id - 1) / 8) + 1;
+    var col = ((id - 1) % 8) + 1;
+    
+    // console.log(row, col);
     return [row, col];
 }
 function isLegalMove(start, end) {
     const [startRow, startCol] = getRowCol(start);
     const [endRow, endCol] = getRowCol(end);
-    if(globalFalse.includes(end)){ 
+
+    if(globalFalse.includes(end)){
+        // console.log("end is false", end);
         return false;
     }
     let dx = [ 2, 1, -1, -2, -2, -1, 1, 2 ];
@@ -52,14 +49,15 @@ function drop(ev) {
     const currDiv = document.getElementById(data).parentNode;
     const currDivId = parseInt(currDiv.id);
     const targetDivId = parseInt(ev.target.id);
-    console.log(currDivId, targetDivId);
-    if(isLegalMove(currDivId, targetDivId)){
+    // console.log(currDivId, targetDivId);
+    if(isLegalMove(currDivId, targetDivId) || currDivId === targetDivId){
         ev.target.appendChild(document.getElementById(data));
     }
     else{
-        console.log("move not allowed", currDivId, targetDivId);
-        let audio = new Audio('assets/decline.mp3');
-        audio.play();
+        if(playSound){
+            new Audio('../alerts/decline.mp3').play();
+        }
+        return;
     }
 }
 
@@ -80,7 +78,7 @@ KnightImg.width = 75;
 KnightImg.height = 75;
 
 function initBoard() {
-  const chessBoard = document.querySelector(".chess-board");
+  chessBoard = document.querySelector(".chess-board");
   chessBoard.innerHTML = ""; // Clear any previous squares
   // create the 8 x 8 chess board
   // colour of the square
@@ -111,6 +109,10 @@ function initBoard() {
 function resetBoard() {
   initBoard();
 }
+function toggleSound(){
+    playSound = !playSound;
+    
+}
 
 // Initialize the board for the first time
-initBoard();
+window.onload = initBoard;
