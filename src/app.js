@@ -98,19 +98,21 @@ function drop(ev) {
             const isLight = (row + col) % 2 === 0;
             ev.target.style.backgroundColor = '#66FF00';
             // Move the circle to the next path position if there is one
+            new Audio('../alerts/move-sound.ogg').play();
             ev.target.appendChild(knight);
             ptr++;
             if (ptr < path.length) {
                 showPath(); // Function to visually move the circle to path[ptr]
             } else {
                 // End the game when the last path position is reached
-                new Audio('../alerts/game-end.mp3').play();
+                new Audio('../alerts/vicotry-sound.ogg').play();
             }
             return;
         }
 
         // Check if the move is legal for the knight
         if (isLegalMove(currDivId, targetDivId) || currDivId === targetDivId) {
+            new Audio('../alerts/move-sound.ogg').play();
             ev.target.appendChild(knight);
         } else {
             // Play a sound if the move is not allowed
@@ -130,7 +132,7 @@ function initBoard() {
   chessBoard.innerHTML = ""; // Clear any previous squares
   // create the 8 x 8 chess board
   // colour of the square
-  
+
   for (let row = 0; row < 8; row++) {
     for (let col = 0; col < 8; col++) {
       const square = document.createElement("div");
