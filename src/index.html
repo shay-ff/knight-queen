@@ -14,8 +14,9 @@
         </div>
         <div class="chess-board overflow-hidden"></div>
         <div class="flex justify-center">
-            <button id = "toggle-button" class="bg-white px-4 py-1 mr-4 rounded-md hover:bg-white/50 hover:text-white" onClick = "toggleSound()" > Toggle Sound </button>
-            <button type="checkbox" class="bg-white hover:bg-white/50 hover:text-white flex items-center rounded-md mr-4 px-4 py-1" onClick="showBlocked()"> Show blocked squares</button>
+            <button input ="checkbox" class="bg-white hover:bg-white/50 hover:text-white flex items-center rounded-md mr-4 px-4 py-1" onClick="showBlocked()"> Show blocked squares
+                <span id="blockedDot" class="w-2 h-2 rounded-full ml-2"></span>
+            </button>
             <button class="bg-white px-4 py-1 rounded-md hover:bg-white/50 hover:text-white" onClick = "resetBoard()" > Reset </button>
         </div>
     </div>
