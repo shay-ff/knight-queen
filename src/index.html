@@ -7,19 +7,41 @@
     <link rel="icon" href="../public/favicon.png">
     <title> Puzzle </title>
 </head>
-<body class="bg-[#06080E]">
-    <div class="w-full">
-        <div class="w-full flex justify-center bg-[#06080E] mt-4  py-1">
-            <h1 class="text-white text-7xl font-serif"> Knight and Queen Puzzle </h1>
-        </div>
+<body class="bg-[#050b15]">
+    <div class="w-full flex justify-center bg-[#06080E] mt-4  py-1">
+        <h1 class="text-white text-7xl font-serif"> Knight and Queen Puzzle </h1>
+    </div>  
+    <div class="w-full flex justify-center">
         <div class="chess-board overflow-hidden"></div>
-        <div class="flex justify-center">
-            <button input ="checkbox" class="bg-white hover:bg-white/50 hover:text-white flex items-center rounded-md mr-4 px-4 py-1" onClick="showBlocked()"> Show blocked squares
-                <span id="blockedDot" class="w-2 h-2 rounded-full ml-2"></span>
-            </button>
-            <button class="bg-white px-4 py-1 rounded-md hover:bg-white/50 hover:text-white" onClick = "resetBoard()" > Reset </button>
+
+        <div class="border border-white p-4 w-64">
+            <div class="mt-4">
+                <p class="font-bold text-white">Time taken: <span id="timer" class="font-normal">0m 0s</span></p>
+                <p id="movesCount" class="font-bold text-white">Moves (0):</p>
+                
+                <div class="table-container overflow-y-auto">
+                    <table class="table-auto w-full mt-2 border-collapse border flex-col-reverse border-white">
+                      <thead>
+                        <tr>
+                          <th class="text-white border border-white px-2 py-1 text-left">id</th>
+                          <th class="text-white border border-white px-2 py-1 text-left">to</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td id="moves" colspan="2" class="text-white border border-white text-center p-2">Make a move!</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+            </div>
         </div>
-        
+    </div>
+    <div class="flex justify-center">
+        <button input ="checkbox" class="bg-white hover:bg-white/50 hover:text-white flex items-center rounded-md ml-0 mr-4 px-4 py-1" onClick="showBlocked()"> Show blocked squares
+            <span id="blockedDot" class="w-2 h-2 rounded-full ml-2"></span>
+        </button>
+        <button class="bg-white px-4 py-1 rounded-md hover:bg-white/50 hover:text-white" onClick = "resetBoard()" > Reset </button>
     </div>
     <script src = "app.js" ></script>
 </body>
